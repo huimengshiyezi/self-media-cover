@@ -37,7 +37,7 @@ npx serve .
 ## 项目结构
 
 ```
-公众号封面配图工具/
+cover-tool/
 ├── index.html              # 主页面
 ├── styles.css              # 样式
 ├── app.js                  # 主逻辑（状态/渲染/绑定/导出）
