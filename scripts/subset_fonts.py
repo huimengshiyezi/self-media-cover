@@ -3,12 +3,15 @@
 字集 = GB2312 一级常用字(3755) + 水印文字 + 默认标题 + 标点数字字母 + 关键繁简字
 """
 import sys
+from pathlib import Path
 from fontTools import subset
 
-FONT_ALI = r"D:\工作空间\公众号封面配图工具\assets\AlibabaPuHuiTi-Bold.woff2"
-FONT_SMILEY = r"D:\工作空间\公众号封面配图工具\assets\SmileySans-Regular.woff2"
-OUT_ALI = r"D:\工作空间\公众号封面配图工具\assets\AlibabaPuHuiTi-Bold.woff2"
-OUT_SMILEY = r"D:\工作空间\公众号封面配图工具\assets\SmileySans-Regular.woff2"
+ASSETS = Path(__file__).resolve().parent.parent / "assets"
+
+FONT_ALI = str(ASSETS / "AlibabaPuHuiTi-Bold.woff2")
+FONT_SMILEY = str(ASSETS / "SmileySans-Regular.woff2")
+OUT_ALI = str(ASSETS / "AlibabaPuHuiTi-Bold.woff2")
+OUT_SMILEY = str(ASSETS / "SmileySans-Regular.woff2")
 
 def build_charset() -> str:
     chars = set()
