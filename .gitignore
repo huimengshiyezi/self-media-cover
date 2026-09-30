@@ -23,3 +23,5 @@ desktop.ini
 
 # 字体备份（不入库）
 scripts/backup_fonts/
+__pycache__/
+*.pyc
