@@ -32,7 +32,7 @@ def build_charset() -> str:
     chars.update("葉叶华华龙龙东东车车门门见见说说话话来来对对过过时时间间长长头头亲亲独独万万岁岁欢迎欢迎")
 
     # 3) 默认标题
-    chars.update("你的公众号标题")
+    chars.update("你的自媒体标题")
 
     # 4) 常用标点、数字、字母、符号
     chars.update("，。！？、；：""''（）《》〈〉【】『』「」…—·～、％￥＠＃＆＊＋－＝／＼｜《》「」")
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     charset = build_charset()
     print(f"字集大小: {len(charset)} 字符")
     # 校验关键字符都在
-    for ch in "AI绘梦师葉子你的公众号标题":
+    for ch in "AI绘梦师葉子你的自媒体标题":
         if ch not in charset:
             print(f"警告: 关键字符缺失 {ch}")
     print(f"包含「葉」: {'葉' in charset}")

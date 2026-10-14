@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>公众号封面配图工具</title>
+  <title>自媒体封面工具</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
       <span class="brand-mark">21:9</span>
-      <span class="brand-name">公众号封面配图工具</span>
+      <span class="brand-name">自媒体封面工具</span>
     </div>
     <div class="toolbar">
       <label class="btn btn-primary">
@@ -32,15 +32,40 @@
   <main class="workspace">
     <section class="canvas-area">
       <div class="canvas-wrapper" id="canvasWrapper">
-        <canvas id="canvas" width="1800" height="766"></canvas>
+        <!-- width / height 只是占位，真实尺寸由 app.js 按 state.canvas 覆盖 -->
+        <canvas id="canvas" width="1" height="1"></canvas>
       </div>
       <div class="canvas-hint">
-        <span>画板 1800 × 766  比例 21:9</span>
+        <span id="canvasSizeLabel">画板加载中…</span>
         <span id="zoomLabel">100%</span>
       </div>
     </section>
 
     <aside class="panel">
+      <div class="panel-section" id="sizeSection">
+        <div class="section-title">画布尺寸</div>
+        <label class="field">
+          <span class="field-label">预设</span>
+          <select id="presetSelect">
+            <option value="gzh-cover" data-w="1800" data-h="766" selected>自媒体封面 21:9（1800 × 766）</option>
+            <option value="gzh-head" data-w="900" data-h="383">自媒体首图 2.35:1（900 × 383）</option>
+            <option value="gzh-square" data-w="900" data-h="900">自媒体方图 1:1（900 × 900）</option>
+            <option value="body-16-9" data-w="1280" data-h="720">正文配图 16:9（1280 × 720）</option>
+            <option value="xhs-3-4" data-w="1080" data-h="1440">小红书竖图 3:4（1080 × 1440）</option>
+            <option value="douyin-9-16" data-w="1080" data-h="1920">抖音竖版 9:16（1080 × 1920）</option>
+            <option value="custom" data-w="0" data-h="0">自定义（自己填宽 × 高）</option>
+          </select>
+        </label>
+        <div class="field row custom-size hidden" id="customSizeRow">
+          <span class="field-label">宽 × 高</span>
+          <input type="number" id="canvasW" class="num-input" min="240" max="6000" step="1" value="1800" />
+          <span class="size-x">×</span>
+          <input type="number" id="canvasH" class="num-input" min="240" max="6000" step="1" value="766" />
+        </div>
+        <p class="hint" id="sizeHint">当前画布 1800 × 766（21:9）。尺寸为常见值，以平台后台为准。</p>
+        <p class="hint">换尺寸后，位置滑块范围、水印锁定位置、背景铺满方式都会跟着变。</p>
+      </div>
+
       <div class="panel-section">
         <div class="section-title">标题文字</div>
         <label class="field">
@@ -192,17 +217,17 @@
           <div class="wm-pos" id="wmPosFields">
             <div class="field row">
               <span class="field-label">X 偏移</span>
-              <input type="range" id="wmX" min="0" max="1800" step="1" value="70" />
-              <input type="number" id="wmXNum" min="0" max="1800" step="1" value="70" class="num-input" />
+              <input type="range" id="wmX" min="0" max="1200" step="1" value="70" />
+              <input type="number" id="wmXNum" min="0" max="1200" step="1" value="70" class="num-input" />
             </div>
             <div class="field row">
               <span class="field-label">Y 偏移</span>
-              <input type="range" id="wmY" min="0" max="766" step="1" value="700" />
-              <input type="number" id="wmYNum" min="0" max="766" step="1" value="700" class="num-input" />
+              <input type="range" id="wmY" min="0" max="1000" step="1" value="700" />
+              <input type="number" id="wmYNum" min="0" max="1000" step="1" value="700" class="num-input" />
             </div>
           </div>
         </div>
-        <p class="hint wm-hint" id="wmHint">已锁定：固定在左下角 (70, 700)。关闭锁定后可调 X/Y 偏移。</p>
+        <p class="hint wm-hint" id="wmHint">已锁定：固定在左下角，换画布尺寸会自动重算。</p>
       </div>
     </aside>
   </main>

@@ -1,5 +1,5 @@
 /* =========================
-   公众号封面配图工具 — styles
+   自媒体封面工具 — styles
    ========================= */
 * { box-sizing: border-box; }
 
@@ -151,11 +151,14 @@ body {
 }
 #canvas {
   display: block;
+  /* 真实像素尺寸 = 当前画布宽高，由 app.js 设置 width/height 属性；
+     这里的初始值只是首帧占位，随即被 fitCanvas() 的 inline 样式覆盖 */
   width: 1800px;
   height: 766px;
   max-width: 100%;
   height: auto;
   border-radius: var(--radius);
+  background: #fff;
 }
 .canvas-hint {
   margin-top: 12px;
@@ -251,6 +254,35 @@ textarea, input[type="text"] {
   resize: vertical;
   min-width: 0;
   box-shadow: none;
+}
+
+/* ===== 画布尺寸 / 预设 ===== */
+select {
+  width: 100%;
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid var(--panel-border);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  min-width: 0;
+}
+select:focus { border-color: var(--primary); }
+
+.custom-size.hidden { display: none; }
+.custom-size .size-x {
+  flex: 0 0 auto;
+  font-size: 15px;
+  color: var(--text-sub);
+  padding: 0 2px;
+}
+.custom-size input.num-input {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
 }
 textarea:focus, input[type="text"]:focus {
   border-color: var(--primary);
